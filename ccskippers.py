@@ -24,6 +24,12 @@ def calculate_points(element):
 
     return key_name, defaulter_pts
 
+def format_result(sum):
+    key_name, points = sum
+    costumer_id, first_name, last_name = key_name.split(',')
+    key_name = costumer_id + ' - ' + first_name + ' ' + last_name
+    return str(key_name) + ' - ' + str(points) + ' pontos de inadimplência'
+
 
 p = beam.Pipeline()
 
@@ -37,6 +43,8 @@ defaulter = (
     | 'Combine poits' >> beam.CombinePerKey(sum)
 #Filtra apenas os que possuem pontos > 0
     | 'Filter defaulters' >> beam.Filter(lambda element: element[1] > 0)
+#Transformação para formatar o resultado
+    | 'Format Result' >> beam.Map(format_result)
 #Salva o resultado
     | 'Write credit card data' >> beam.io.WriteToText("output/cc_skippers")
 )
