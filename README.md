@@ -8,7 +8,7 @@ Nestre projeto é simulado situações que podem ser encontrados em instituiçõ
 
 
 
-## Problema 1
+### Problema 1
 
 Sistema de pontos para os clientes de cartão de crédito seguindo as seguintes regras:
 
@@ -18,5 +18,9 @@ Sistema de pontos para os clientes de cartão de crédito seguindo as seguintes 
 
 Ao final, o total de pontos deve ser exportado em um arquivo.
 
+## Deploy
 
+ - Clone este repositório: $ git clone https://github.com/antoniofernandeslf/bankpoints.git
+ - Ative o ambiente virtual: $ source venv/bin/activate
+ - Execute o script python: $ python ccskippers.py
 
